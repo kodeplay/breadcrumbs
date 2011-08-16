@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 // The character that separates each breadcrumb
-$config['separator'] = "&raquo;";
+$config['separator'] = "&rarr;";
 
 // Should we display a separator after the last breadcrumb?
 $config['after_last'] = FALSE;

@@ -6,16 +6,21 @@
  * @author Ben Weller
  */
 ?>
-<? $c = count($breadcrumbs) ?>
+<?php $c = count($breadcrumbs) ?>
 <ul id="breadcrumbs">
-<? if ($c > ($conf['min_depth']-1)) : ?>
-<? foreach ($breadcrumbs as $crumb) : ?>
-<? if ($crumb->get_url() !== NULL AND count($breadcrumbs > 1)) :  ?>
-	<li><a href="<?=$crumb->get_url()?>"><?=$crumb->get_title()?></a> <?= ( $c != 1 ? $conf['sep'] : ($conf['last'] == TRUE ? $conf['sep'] : '' ) ) ?></li>
-<? else : ?>
-	<li><?=$crumb->get_title()?></li>
-<? endif; ?>
-<? $c-- ?>
-<? endforeach; ?>
-<? endif; ?>
+<?php if ($c > ($conf['min_depth']-1)) : ?>
+<?php foreach ($breadcrumbs as $k=>$crumb) : ?>
+<?php if ($crumb->get_url() !== NULL AND count($breadcrumbs > 1)) :  ?>
+	<li>
+        <a href="<?php echo $crumb->get_url()?>"><?php echo $crumb->get_title()?></a> 
+        <?php if ($k < $c-1 || $k === $c-1 && $conf['last'] == TRUE) { ?>
+        <span class="sep"><?php echo $conf['sep']; ?></span>
+        <?php } ?>
+    </li>
+<?php else : ?>
+    <li><?php echo $crumb->get_title()?></li>
+<?php endif; ?>
+<?php $c-- ?>
+<?php endforeach; ?>
+<?php endif; ?>
 </ul>
