@@ -7,6 +7,6 @@ $config['separator'] = "&rarr;";
 $config['after_last'] = FALSE;
 
 // Minimum depth of breadcrumbs to display
-$config['min_depth'] = 2;
+$config['min_depth'] = 1;
 
 return $config;
